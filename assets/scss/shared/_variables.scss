@@ -1,0 +1,75 @@
+/*  Fonts */
+$base-font: "SuisseIntl", sans-serif;
+$base-font-size: 1.6rem;
+$additional-font: "Kinetika", sans-serif;
+$body-color: #191b1e;
+
+/* Colors */
+$white: #fff;
+$orange: #ea572a;
+$sky: #5f9fff;
+$blue: #2963eb;
+$violet: #6337ff;
+$mint: #72ca97;
+$accept: #50b85a;
+$lime: #d9ff6c;
+$gold: #ffb13e;
+$error: #d63c32;
+$grey-light: #d6dde9;
+$grey-middle: #aeaeae;
+$grey: #57697c;
+$base-100: #4e4e4e;
+$base-300: #555;
+$base-400: #333;
+$base-600: #222;
+$base-900: #111;
+
+/* Breakpoints */
+$breakpoints: (
+    mobile: 0,
+    tablet-sm: 768px,
+    tablet: 1024px,
+    laptop: 1280px,
+    desktop: 1440px,
+);
+
+/* Grid */
+$aside-padding: 2.4rem;
+$header-h: 6.2rem;
+$header-h-mobile: 6.2rem;
+$header-h-tablet: 6.2rem;
+$anchor-offset: 2rem;
+$header-z-index: 100;
+$footer-h: 18rem;
+$aside-padding-mobile: 32px;
+$aside-padding-tablet: 40px;
+
+/*stylelint-disable*/
+:export {
+    header-desktop: $header-h;
+    header-tablet: $header-h-tablet;
+    header-mobile: $header-h-mobile;
+}
+
+/*stylelint-enable*/
+
+/* Transitions */
+$default-transition: .4s ease;
+
+/* Text */
+$text-shadow: 0 1.6rem 2.4rem rgba(0 0 0 / 6%), 0 2px .6rem rgba(0 0 0 / 4%), 0 0 1px rgba(0 0 0 / 4%);
+$text-shadow-mobile: 0 10px 20px rgba(0 0 0 / 4%), 0 2px 6px rgba(0 0 0 / 4%), 0 0 1px rgba(0 0 0 / 4%);
+
+/* PDF */
+$pdf-height: 1120px;
+$pdf-width: 792px;
+$pdf-diff: 1.33;
+$pdf-footer-h: 120px * $pdf-diff;
+$pdf-header-h: 60px * $pdf-diff;
+$pdf-header-offset: 42px * $pdf-diff;
+
+/*stylelint-disable*/
+:export {
+    header-h: $header-h;
+}
+/*stylelint-enable*/
