@@ -1,5 +1,11 @@
 <template>
-    <transition duration="500" mode="out-in" name="modal" @before-enter="beforeEnter" @after-leave="afterLeave">
+    <transition
+        duration="500"
+        mode="out-in"
+        name="modal"
+        @before-enter="beforeEnter"
+        @after-leave="afterLeave"
+    >
         <div
             v-if="modal.isOpen"
             :key="key"
@@ -24,48 +30,45 @@
     </transition>
 </template>
 
-<script setup lang="ts">
-    import {useModal} from '@/pinia/modal';
-    import {storeToRefs} from 'pinia';
+<script setup>
+    import { useModalStore } from '@/pinia/modal';
+    import { storeToRefs } from 'pinia';
+    import {
+        disablePageScroll,
+        enablePageScroll,
+    } from 'scroll-lock/dist/scroll-lock.js';
 
     const $style = useCssModule();
-    const modal = useModal();
-    const {component, attrs, onClose} = storeToRefs(modal)
-    // const component = ref(null);
-    // const attrs = ref(null);
-    // const onClose = ref(null);
+    const modal = useModalStore();
+    const { component, attrs } = storeToRefs(modal);
     const key = ref(null);
     const isPopover = ref(false);
 
     const classList = computed(() => ({
         [$style[`_${attrs?.position}`]]: modal.attrs.position,
         [$style._popover]: isPopover.value,
-    }))
+    }));
 
-    // onBeforeMount(() => {
-        // const {$modal} = useNuxtApp();
-        //
-        // $modal.on('open', open)
-        // $modal.on('update', update)
-        // $modal.on('close', close)
-    // })
+    onUnmounted(() => {
+        enablePageScroll();
+    });
 
-    function beforeEnter() {}
-    function afterLeave() {}
-    function onChange() {}
-
-    function open(component, attrs, onClose) {
-        console.log('open from TheModal');
-        modal.component = component;
-        modal.attrs = attrs;
-        modal.onClose = onClose();
-    }
-
-    function update() {
-
-    }
     function close() {
-        modal.close()
+        modal.close();
+    }
+
+    function beforeEnter() {
+        disablePageScroll();
+    }
+
+    function afterLeave() {
+        enablePageScroll();
+    }
+
+    function onChange(val) {
+        if (val === 'reset') {
+            close();
+        }
     }
 </script>
 
@@ -121,13 +124,15 @@
         &:global(.modal-leave-to) {
             &:after {
                 opacity: 1;
-                transition: opacity .3s ease;
+                transition: opacity 0.3s ease;
             }
 
             .container {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
-                transition: opacity .2s ease .3s, transform .2s ease .3s;
+                transition:
+                    opacity 0.2s ease 0.3s,
+                    transform 0.2s ease 0.3s;
             }
         }
 
@@ -135,13 +140,15 @@
         &:global(.modal-leave-active) {
             &:after {
                 opacity: 0;
-                transition: opacity .3s ease .2s;
+                transition: opacity 0.3s ease 0.2s;
             }
 
             .container {
                 opacity: 0;
                 transform: translate3d(100%, 0, 0);
-                transition: opacity .2s ease, transform .2s ease;
+                transition:
+                    opacity 0.2s ease,
+                    transform 0.2s ease;
 
                 @include respond-to(tablet) {
                     transform: translate3d(0, 100%, 0);
@@ -150,14 +157,14 @@
         }
 
         &:after {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
             z-index: 1;
-            background-color: rgba($base-400, .4);
+            background-color: rgba($base-400, 0.4);
         }
 
         .wrapper {

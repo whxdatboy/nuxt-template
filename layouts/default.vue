@@ -1,33 +1,30 @@
 <template>
-        <div :class="$style.page">
-            <main :class="$style.main">
-                <NuxtPage />
-            </main>
+    <div :class="$style.page">
+        <main :class="$style.main">
+            <NuxtPage />
+        </main>
 
-            <TheModal :show="modal.isOpen" :class="$style.modal" />
-        </div>
+        <TheModal :class="$style.modal" />
+    </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
     // Utils
-    import { calcVhInit, calcVhDestroy } from '~/assets/js/utils/common-utils';
+    import { calcVhInit, calcVhDestroy } from '@/assets/js/utils/common-utils';
 
     // Components
     import TheModal from '@/components/layout/TheModal.vue';
 
-    import {ref} from 'vue';
-    import {useModal} from '@/pinia/modal';
-
-    const modal = useModal()
-
     onMounted(() => {
-       nextTick(() => {
-           calcVhInit();
+        nextTick(() => {
+            calcVhInit();
 
-           const touchSupported = 'ontouchstart' in window || navigator.maxTouchPoints > 0 ||
-               navigator.msMaxTouchPoints > 0
-       })
-    })
+            const touchSupported =
+                'ontouchstart' in window ||
+                navigator.maxTouchPoints > 0 ||
+                navigator.msMaxTouchPoints > 0;
+        });
+    });
 </script>
 
 <style module lang="scss">
