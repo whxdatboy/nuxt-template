@@ -18,6 +18,7 @@
     "@babel/preset-env": "^7.22.20",
     "@nuxt/devtools": "latest",
     "@nuxt/image": "^0.7.1",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",

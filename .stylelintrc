@@ -25,7 +25,6 @@
         "max-line-length": null,
         "at-rule-no-unknown": null,
         "scss/at-rule-no-unknown": true,
-        "declaration-colon-newline-after": "always-multi-line",
         "at-rule-empty-line-before": [
             "always",
             {
@@ -54,28 +53,11 @@
             }
         ],
         "comment-empty-line-before": "always",
-        "block-closing-brace-newline-before": "always",
-        "block-closing-brace-newline-after": [
-            "always",
-            {
-                "ignoreAtRules": [
-                    "if",
-                    "else"
-                ]
-            }
-        ],
         "declaration-no-important": true,
         "no-descending-specificity": null,
         "value-no-vendor-prefix": true,
         "selector-no-vendor-prefix": true,
         "selector-pseudo-element-colon-notation": "single",
-        "indentation": [
-            4,
-            {
-                "baseIndentLevel": 1
-            }
-        ],
-        "number-leading-zero": "never",
         "order/properties-order": [
             "content",
             "position",
@@ -211,6 +193,7 @@
             "animation-play-state",
             "animation-timing-function",
             "cursor"
-        ]
+        ],
+        "declaration-block-no-redundant-longhand-properties": null
     }
 }
